@@ -1,0 +1,11 @@
+name = "cf-lambda-streaming"
+main = "src/worker.mjs"
+compatibility_date = "2023-01-20"
+compatibility_flags = ["streams_enable_constructors"]
+
+[durable_objects]
+bindings = [{ name = "AWS_BRIDGE", class_name = "AWSBridge" }]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["AWSBridge"]

@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "cf-lambda-streaming",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:*\"",
+    "dev:arc": "arc sandbox",
+    "dev:wrangler": "wrangler dev --local --local-upstream localhost:3333"
+  },
+  "devDependencies": {
+    "@architect/architect": "^10.8.4",
+    "@cloudflare/workers-types": "^4.20221111.1",
+    "aws-lambda": "^1.0.7",
+    "concurrently": "^7.6.0",
+    "wrangler": "^2.8.0"
+  },
+  "dependencies": {
+    "@architect/functions": "^5.3.3",
+    "ws": "^8.12.0"
+  }
+}
