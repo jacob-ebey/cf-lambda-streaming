@@ -1,0 +1,13 @@
+diff --git a/node_modules/@remix-run/dev/dist/compiler/compilerServer.js b/node_modules/@remix-run/dev/dist/compiler/compilerServer.js
+index fa6bd05..7bd4325 100644
+--- a/node_modules/@remix-run/dev/dist/compiler/compilerServer.js
++++ b/node_modules/@remix-run/dev/dist/compiler/compilerServer.js
+@@ -135,7 +135,7 @@ const createEsbuildConfig = (config, assetsManifestChannel, options) => {
+ async function writeServerBuildResult(config, outputFiles) {
+   await fse__namespace.ensureDir(path__namespace.dirname(config.serverBuildPath));
+   for (let file of outputFiles) {
+-    if (file.path.endsWith(".js")) {
++    if (file.path.endsWith(".js") || file.path.endsWith(".mjs")) {
+       // fix sourceMappingURL to be relative to current path instead of /build
+       let filename = file.path.substring(file.path.lastIndexOf(path__namespace.sep) + 1);
+       let escapedFilename = filename.replace(/\./g, "\\.");

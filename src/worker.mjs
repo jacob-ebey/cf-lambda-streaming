@@ -3,6 +3,7 @@ export default {
    * @param {Request} request
    * @param {{
    *  ORIGIN_URL: string;
+   *  SOCKET_URL: string;
    * }} env
    * @param {import("@cloudflare/workers-types").ExecutionContext} ctx
    * @returns {Response}
@@ -10,8 +11,20 @@ export default {
   async fetch(request, env, ctx) {
     ctx.passThroughOnException();
 
-    console.log({ URL: env.ORIGIN_URL });
-    let webSocketResponse = await fetch(env.ORIGIN_URL, {
+    if (!(request.headers.get("Accept") || "").includes("text/html")) {
+      const url = new URL(request.url);
+      return fetch(new URL(url.pathname + url.search, env.ORIGIN_URL), {
+        body: request.body,
+        headers: request.headers,
+        method: request.method,
+        signal: request.signal,
+        cf: {
+          cacheEverything: true,
+        },
+      });
+    }
+
+    let webSocketResponse = await fetch(env.SOCKET_URL, {
       headers: {
         Upgrade: "websocket",
       },

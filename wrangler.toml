@@ -4,7 +4,9 @@ compatibility_date = "2022-10-30"
 compatibility_flags = ["streams_enable_constructors"]
 
 [vars]
-ORIGIN_URL = "https://lxuyiz6x19.execute-api.us-west-2.amazonaws.com/staging"
+ORIGIN_URL = "https://8w3tpor496.execute-api.us-west-2.amazonaws.com"
+SOCKET_URL = "https://lxuyiz6x19.execute-api.us-west-2.amazonaws.com/staging"
 
 [env.local.vars]
 ORIGIN_URL = "http://localhost:3333"
+SOCKET_URL = "http://localhost:3333"

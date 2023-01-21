@@ -1,5 +1,8 @@
+.cache
 .wrangler
 node_modules
 *.pkg
 sam.json
 sam.yaml
+public/build
+src/shared/remix.*
