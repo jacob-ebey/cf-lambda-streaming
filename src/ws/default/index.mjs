@@ -6,6 +6,7 @@ export async function handler(event) {
   const connectionId = event.requestContext.connectionId;
   const message = JSON.parse(event.body);
 
+  const id = message.id;
   const headers = new Headers(message.headers);
   const request = new Request(message.url, {
     headers,
@@ -17,6 +18,7 @@ export async function handler(event) {
   await arc.ws.send({
     id: connectionId,
     payload: {
+      id,
       headers: Array.from(response.headers.entries()),
       status: response.status,
       statusText: response.statusText,
@@ -31,17 +33,32 @@ export async function handler(event) {
     while (!done) {
       await arc.ws.send({
         id: connectionId,
-        payload: decoder.decode(value, { stream: true }),
+        payload: {
+          id,
+          body: decoder.decode(value, { stream: true }),
+        },
       });
       ({ done, value } = await reader.read());
     }
 
     await arc.ws.send({
       id: connectionId,
-      payload: decoder.decode(),
+      payload: {
+        id,
+        body: decoder.decode(),
+        done: true,
+      },
+    });
+  } else {
+    await arc.ws.send({
+      id: connectionId,
+      payload: {
+        id,
+        done: true,
+      },
     });
   }
-  await arc.ws.close({ id: connectionId });
+  // await arc.ws.close({ id: connectionId });
 
   return { statusCode: 200 };
 }

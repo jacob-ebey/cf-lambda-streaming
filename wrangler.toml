@@ -7,6 +7,22 @@ compatibility_flags = ["streams_enable_constructors"]
 ORIGIN_URL = "https://8w3tpor496.execute-api.us-west-2.amazonaws.com"
 SOCKET_URL = "https://lxuyiz6x19.execute-api.us-west-2.amazonaws.com/staging"
 
+[durable_objects]
+bindings = [
+  { name = "AWS_BRIDGE", class_name = "AWSBridge" },
+  { name = "AWS_POOL", class_name = "AWSPool" },
+]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["AWSBridge", "AWSPool"]
+
 [env.local.vars]
 ORIGIN_URL = "http://localhost:3333"
 SOCKET_URL = "http://localhost:3333"
+
+[env.local.durable_objects]
+bindings = [
+  { name = "AWS_BRIDGE", class_name = "AWSBridge" },
+  { name = "AWS_POOL", class_name = "AWSPool" },
+]
