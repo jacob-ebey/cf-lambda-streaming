@@ -1,2 +1,5 @@
 .wrangler
 node_modules
+*.pkg
+sam.json
+sam.yaml

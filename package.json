@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "concurrently \"npm:dev:*\"",
     "dev:arc": "arc sandbox",
-    "dev:wrangler": "wrangler dev --local --local-upstream localhost:3333"
+    "dev:wrangler": "wrangler dev --local --env local --local-upstream localhost:3333"
   },
   "devDependencies": {
     "@architect/architect": "^10.8.4",

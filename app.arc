@@ -9,6 +9,9 @@ cf-lambda-streaming
   method any
   src src/http
 
+@shared
+# no further config required
+
 @static
 
 # @aws

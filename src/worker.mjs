@@ -2,7 +2,7 @@ export default {
   /**
    * @param {Request} request
    * @param {{
-   *  AWS_BRIDGE: import("@cloudflare/workers-types").DurableObjectNamespace
+   *  ORIGIN_URL: string;
    * }} env
    * @param {import("@cloudflare/workers-types").ExecutionContext} ctx
    * @returns {Response}
@@ -10,7 +10,8 @@ export default {
   async fetch(request, env, ctx) {
     ctx.passThroughOnException();
 
-    let webSocketResponse = await fetch("http://localhost:3333", {
+    console.log({ URL: env.ORIGIN_URL });
+    let webSocketResponse = await fetch(env.ORIGIN_URL, {
       headers: {
         Upgrade: "websocket",
       },

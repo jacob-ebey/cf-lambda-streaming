@@ -1,6 +1,6 @@
 import arc from "@architect/functions";
 
-import * as app from "../../app.mjs";
+import * as app from "@architect/shared/app.mjs";
 
 export async function handler(event) {
   const connectionId = event.requestContext.connectionId;

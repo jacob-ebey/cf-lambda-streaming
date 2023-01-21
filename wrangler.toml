@@ -1,4 +1,10 @@
 name = "cf-lambda-streaming"
 main = "src/worker.mjs"
-compatibility_date = "2023-01-20"
+compatibility_date = "2022-10-30"
 compatibility_flags = ["streams_enable_constructors"]
+
+[vars]
+ORIGIN_URL = "https://lxuyiz6x19.execute-api.us-west-2.amazonaws.com/staging"
+
+[env.local.vars]
+ORIGIN_URL = "http://localhost:3333"

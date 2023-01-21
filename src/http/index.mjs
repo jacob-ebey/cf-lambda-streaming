@@ -1,4 +1,4 @@
-import * as app from "../app.mjs";
+import * as app from "@architect/shared/app.mjs";
 
 /** @type {import("aws-lambda").APIGatewayProxyHandlerV2} */
 export async function handler(event) {
