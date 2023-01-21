@@ -9,36 +9,12 @@ export default {
    */
   async fetch(request, env, ctx) {
     ctx.passThroughOnException();
-    const id = env.AWS_BRIDGE.newUniqueId();
-    const bridge = env.AWS_BRIDGE.get(id);
-    const response = await bridge.fetch(request);
-    return response;
-  },
-};
-
-export class AWSBridge {
-  /**
-   *
-   * @param {import("@cloudflare/workers-types").DurableObjectState} state
-   */
-  constructor(state) {
-    this.state = state;
-  }
-
-  async fetch(request) {
-    const abortController = new AbortController();
-    request.signal.addEventListener("abort", () => {
-      if (!abortController.signal.aborted) {
-        abortController.abort();
-      }
-    });
-    const signal = abortController.signal;
 
     let webSocketResponse = await fetch("http://localhost:3333", {
       headers: {
         Upgrade: "websocket",
       },
-      signal,
+      signal: request.signal,
     });
 
     /** @type {WebSocket} */
@@ -95,5 +71,5 @@ export class AWSBridge {
       status: responseInit.status,
       statusText: responseInit.statusText,
     });
-  }
-}
+  },
+};
