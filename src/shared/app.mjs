@@ -8,7 +8,7 @@ const requestHandler = createRequestHandler(build);
  * @param {Request} request
  */
 export async function handler(request) {
-  return await requestHandler(request);
+  return await requestHandler(request, process.env.NODE_ENV);
   // const body = new ReadableStream({
   //   async start(controller) {
   //     controller.enqueue(new TextEncoder().encode("Hello, World!".repeat(200)));
