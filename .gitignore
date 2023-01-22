@@ -6,3 +6,5 @@ sam.json
 sam.yaml
 public/build
 src/shared/remix.*
+src/**/package.json
+src/**/package-lock.json
