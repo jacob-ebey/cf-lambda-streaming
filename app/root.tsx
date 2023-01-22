@@ -18,11 +18,6 @@ export default function Root() {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
-        {Array(100)
-          .fill(null)
-          .map((_, i) => (
-            <p key={i}>YOOOOOOOOOO {i}</p>
-          ))}
       </body>
     </html>
   );

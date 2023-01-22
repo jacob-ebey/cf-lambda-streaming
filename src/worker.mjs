@@ -19,8 +19,11 @@ export default {
   async fetch(request, env, ctx) {
     ctx.passThroughOnException();
 
-    if (!(request.headers.get("Accept") || "").includes("text/html")) {
-      const url = new URL(request.url);
+    const url = new URL(request.url);
+    if (
+      !(request.headers.get("Accept") || "").includes("text/html") &&
+      !url.searchParams.has("_data")
+    ) {
       return await fetch(
         new URL(url.pathname + url.search, env.ORIGIN_URL),
         request

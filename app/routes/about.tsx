@@ -20,7 +20,7 @@ export default function Deferred() {
     <div>
       <h1>Deferred</h1>
       <p>
-        <Link to="/about">Go to About page</Link>
+        <Link to="/">Go to Home page</Link>
       </p>
       <p>Count: {count}</p>
       <p>
@@ -45,7 +45,7 @@ export default function Deferred() {
       {Array(100)
         .fill(null)
         .map((_, i) => (
-          <p key={i}>Home {i}</p>
+          <p key={i}>About {i}</p>
         ))}
     </div>
   );
