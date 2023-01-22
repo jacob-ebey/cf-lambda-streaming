@@ -1,4 +1,6 @@
 import { identify, Group, Replica } from "dog";
+import isbot from "isbot";
+isbot.exclude(["chrome-lighthouse"]);
 
 /**
  * @typedef {{
@@ -21,8 +23,9 @@ export default {
 
     const url = new URL(request.url);
     if (
-      !(request.headers.get("Accept") || "").includes("text/html") &&
-      !url.searchParams.has("_data")
+      isbot(request.headers.get("User-Agent")) ||
+      (!(request.headers.get("Accept") || "").includes("text/html") &&
+        !url.searchParams.has("_data"))
     ) {
       return await fetch(
         new URL(url.pathname + url.search, env.ORIGIN_URL),
