@@ -6,6 +6,8 @@ Enable your AWS Lambda hosted applications to stream responses via Cloudflare Wo
 
 HTTP request -> CF Worker -> CF DO configurable load balancer-> WebSocket -> AWS -> WebSocket -> CF DO -> CF Worker -> HTTP Response
 
+![Architecture diagram](./overview.png)
+
 ## Deploying
 
 Build the remix app:
