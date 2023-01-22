@@ -9,17 +9,4 @@ const requestHandler = createRequestHandler(build);
  */
 export async function handler(request) {
   return await requestHandler(request, process.env.NODE_ENV);
-  // const body = new ReadableStream({
-  //   async start(controller) {
-  //     controller.enqueue(new TextEncoder().encode("Hello, World!".repeat(200)));
-  //     await new Promise((resolve) => setTimeout(resolve, 1000));
-  //     controller.enqueue(new TextEncoder().encode("\n\nDelayed :D"));
-  //     controller.close();
-  //   },
-  // });
-
-  // return new Response(body, {
-  //   status: 202,
-  //   headers: { "x-test": "yay" },
-  // });
 }

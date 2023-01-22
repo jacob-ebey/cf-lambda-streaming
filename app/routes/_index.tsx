@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { defer } from "@remix-run/node";
 import { Await, useLoaderData } from "@remix-run/react";
 
@@ -13,9 +13,16 @@ export function loader() {
 }
 
 export default function Deferred() {
-  let { deferred } = useLoaderData();
+  const { deferred } = useLoaderData();
+  const [count, setCount] = useState(0);
+
   return (
     <div>
+      <h1>Deferred</h1>
+      <p>Count: {count}</p>
+      <p>
+        <button onClick={() => setCount(count + 1)}>Increment</button>
+      </p>
       <Suspense
         fallback={
           <div>

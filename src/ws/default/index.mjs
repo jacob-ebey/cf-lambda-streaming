@@ -58,7 +58,6 @@ export async function handler(event) {
       },
     });
   }
-  // await arc.ws.close({ id: connectionId });
 
   return { statusCode: 200 };
 }
