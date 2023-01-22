@@ -30,7 +30,3 @@ Deploy to Cloudflare:
 ```sh
 npx wrangler publish
 ```
-
-## TODO
-
-- [] Look into hydration errors when `<Scripts>` is added, someone who knows AWS might be able to help here. IDK how to even access logs in the dashboard.
